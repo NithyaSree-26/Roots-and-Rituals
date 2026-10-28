@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roots and Rituals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+    body{
+        margin: 0;
+        padding: 40px 60px;
+        min-height: 100vh;
+        background:
+        linear-gradient(
+            120deg,
+            #d8cfbd 0%,
+            #eee8dc 22%,
+            #f5f1e8 50%,
+            #e5dfd2 78%,
+            #cfc4ae 100%
+        );
+        color: #3f5138;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    /* Green background shape */
+
+    body::before{
+        content: "";
+        position: fixed;
+        width: 330px;
+        height: 330px;
+        border-radius: 50%;
+        background: rgba(62, 92, 74, 0.329);
+        top: -140px;
+        left: -120px;
+        z-index: -1;
+        animation: greenMove 8s ease-in-out infinite alternate;
+    }
+
+    /* Beige background shape */
+    body::after{
+        content: "";
+        position: fixed;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        background: rgba(163, 139, 101, 0.39);
+        bottom: -190px;
+        right: -150px;
+        z-index: -1;
+        animation: beigeMove 9s ease-in-out infinite alternate;
+    }
+    
+/* Green shape animation */
+    @keyframes greenMove{
+        0%{
+            transform: translate(0, 0);
+        }
+        100%{
+            transform: translate(25px, 18px);
+        }
+    }
+
+/* Beige shape animation */
+    @keyframes beigeMove{
+        0%{
+            transform: translate(0, 0);
+        }
+        100%{
+            transform: translate(-22px, -18px);
+        }
+    }
+
+/* Header */
+    .cart-header{
+        text-align: center;
+        margin-bottom: 45px;
+    }
+    .cart-header p{
+        margin: 0 0 8px;
+        font-size: 13px;
+        letter-spacing: 4px;
+        color: #7d8b70;
+    }
+    .cart-header h1{
+        margin: 0;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 42px;
+        font-weight: normal;
+        color: #3f5138;
+    }
+    .cart-header span{
+        display: block;
+        margin-top: 10px;
+        color: #777;
+        font-size: 15px;
+    }
+
+/* Main Layout */
+    .cart-layout{
+        max-width: 1100px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 45px;
+        align-items: start;
+    }
+
+/* Products Section */
+    .cart-products{
+        background: transparent;
+    }
+    .section-title{
+        margin-bottom: 20px;
+    }
+    .section-title h2{
+        margin: 0;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 25px;
+        color: #3f5138;
+    }
+    .section-title span{
+       display: block;
+       margin-top: 5px;
+       color: #888;
+       font-size: 14px;
+    }
+
+/* Product Cards */
+    #cart div{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: #fffdf9;
+        border: 1px solid #e1dbd0;
+        border-radius: 14px;
+        padding: 14px;
+        margin-bottom: 6px;
+        box-shadow: 0 4px 12px rgba(63,81,56,0.08);
+        transition: 0.3s;
+    }
+    #cart div:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(63,81,56,0.14);
+    }
+
+/* Product Image */
+    #cart img{
+        width: 105px;
+        height: 105px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+/* Product Name */
+    #cart h3{
+        width: 180px;
+        margin: 0;
+        text-align: left;
+        color: #333;
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 1.4;
+    }
+
+/* Product Price */
+    #cart p{
+        width: 75px;
+        margin: 0;
+        color: #3f5138;
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+/* Quantity Buttons */
+    #cart button{
+        padding: 5px 10px;
+        margin: 2px;
+        border: 1px solid #cfc8bb;
+        border-radius: 5px;
+        background: transparent;
+        color: #3f5138;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    #cart button:hover{
+        background: #3f5138;
+        color: white;
+    }
+
+/* Quantity Number */
+    #cart span{
+        font-weight: 500;
+        min-width: 20px;
+        text-align: center;
+    }
+
+/* Trash Icon */
+    #cart button:last-child{
+        border: none;
+        color: #a36b65;
+        font-size: 17px;
+        background: transparent;
+    }
+    #cart button:last-child:hover{
+        background: #f1dfdc;
+        color: #8d3f38;
+    }
+
+/* Order Summary */
+    .order-summary{
+        background: #fffdf9;
+        padding: 30px;
+        border-radius: 14px;
+        border: 1px solid #e0d9cc;
+        box-shadow: 0 8px 25px rgba(63,81,56,0.10);
+        position: sticky;
+        top: 25px;
+    }
+    .order-summary h2{
+        margin-top: 0;
+        margin-bottom: 25px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 25px;
+        font-weight: normal;
+        color: #3f5138;
+    }
+    
+/* Summary Lines */
+    .summary-line{
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 0;
+        color: #666;
+        font-size: 15px;
+    }
+    .summary-line span:last-child{
+        color: #3f5138;
+        font-weight: 500;
+    }
+
+/* Divider */
+    .order-summary hr{
+        border: none;
+        border-top: 1px solid #ddd6ca;
+        margin: 22px 0;
+    }
+
+/* Total */
+    .summary-total{
+        display: flex;
+        justify-content: space-between;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 21px;
+        color: #3f5138;
+        margin-bottom: 25px;
+    }
+    .summary-total span:last-child{
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+/* Checkout */
+    #checkoutBtn{
+        width: 100%;
+        padding: 13px;
+        border: none;
+        border-radius: 6px;
+        background: #3f5138;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    #checkoutBtn:hover{
+        background: #2f3d2a;
+    }
+
+/* Clear Cart */
+    #clearBtn{
+        display: block;
+        margin: 15px auto 0;
+        border: none;
+        background: transparent;
+        color: #b97962;
+        font-size: 13px;
+        cursor: pointer;
+    }
+    #clearBtn:hover{
+        color: #a33f38;
+    }
+
+/* Bottom Note */
+    .nature-note{
+        text-align: center;
+        margin: 25px 0 0;
+        color: #272625;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+/* Mobile */
+    @media(max-width: 800px){
+        body{
+        padding: 25px 15px;
+    }
+    .cart-header{
+        margin-bottom: 30px;
+    }
+    .cart-header h1{
+        font-size: 32px;
+    }
+    .cart-layout{
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    #cart div{
+        gap: 10px;
+        padding: 12px 0;
+        flex-wrap: wrap;
+    }
+    #cart img{
+        width: 80px;
+        height: 80px;
+    }
+    #cart h3{
+        width: calc(100% - 100px);
+        font-size: 15px;
+    }
+    #cart p{
+        width: auto;
+        margin-left: 90px;
+    }
+    #cart button{
+        padding: 5px 9px;
+    }
+    .order-summary{
+        padding: 22px;
+    }
+}
+.continue-shopping{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    color: #191b19;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.continue-shopping:hover{
+    color: #1a1b19;
+    transform: translateX(-3px);
+}
+.continue-shopping i{
+    font-size: 13px;
+}
+
+</style>
+</head>
+<body>
+    
+    <div class="cart-header">
+        <p>ROOTS & RITUALS</p>
+        <h1>My Cart</h1>
+        <span>Thoughtfully chosen, naturally beautiful.</span>
+    </div>
+    <div class="cart-layout">
+        
+<!-- Products Section -->       
+        <div class="cart-products">
+            <div class="section-title">
+                <h2>Cart Items</h2>
+                <span>Review your selected products</span>
+
+            </div>
+
+<!-- Products will appear here -->           
+            <div id="cart"></div>
+
+<!-- Continue Shopping -->           
+            <a href="index.html" class="continue-shopping">
+                <i class="fa-solid fa-arrow-left"></i>Continue Shopping
+            </a>
+        </div>
+
+<!-- Order Summary -->
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-line">
+                <span>Subtotal</span>
+                <span>₹<span id="grandTotal">0</span></span>
+            </div>
+            <div class="summary-line">
+                <span>Delivery</span><span>Free</span>
+            </div>
+            <hr>
+            <div class="summary-total">
+                <span>Total</span>
+                <span>₹<span id="summaryTotal">0</span></span>
+            </div>
+            <button id="checkoutBtn">Proceed to Checkout</button>
+            <button id="clearBtn" onclick="clearCart()">Clear all items</button>
+            <p class="nature-note">✦ Made with care, inspired by nature ✦</p>
+        </div>
+    </div>
+
+    
+<script>
+    let products = JSON.parse(localStorage.getItem("cart")) || [];
+
+// checkout
+    document.getElementById("checkoutBtn").onclick = function(){
+        if(products.length > 0){
+            alert("Thank you for shopping with Roots & Rituals!");
+        }
+        else{
+            alert("No items in cart");
+        }
+    };
+    
+// add item
+    function add(){
+        for(let i = 0; i < products.length; i++){
+            let card = document.createElement("div");
+            let quantity = products[i].quantity || 1;
+            let price = Number(products[i].price.replace("₹", ""));
+            card.innerHTML ="<img src='" + products[i].image + "'>" +"<h3>" + products[i].name + "</h3>" +"<p>₹<span id='price'>" + price * quantity + "</span></p>" +"<button onclick='decrease(event)'>-</button>" +"<span id='quantity'>" + quantity + "</span>" +"<button onclick='increase(event)'>+</button>" +"<button onclick='remove(event)'><i class='fa-regular fa-trash-can'></i></button>";
+            card.dataset.price = price;
+            document.getElementById("cart").append(card);
+        }
+        total();
+    }
+
+// increase item quantity
+    function increase(event){
+        let card = event.target.parentElement;
+        let quantity = card.querySelector("#quantity");
+        let price = Number(card.dataset.price);
+        let amount = card.querySelector("#price");
+        quantity.innerText = Number(quantity.innerText) + 1;
+        amount.innerText = price * Number(quantity.innerText);
+        let index = Array.from(card.parentElement.children).indexOf(card);
+        products[index].quantity = Number(quantity.innerText);
+        localStorage.setItem("cart", JSON.stringify(products));
+        total();
+    }
+    
+// decrease item quantity
+    function decrease(event){
+        let card = event.target.parentElement;
+        let quantity = card.querySelector("#quantity");
+        let price = Number(card.dataset.price);
+        let amount = card.querySelector("#price");
+        if (Number(quantity.innerText) > 1){
+            quantity.innerText = Number(quantity.innerText) - 1;
+            amount.innerText = price * Number(quantity.innerText);
+            let index = Array.from(card.parentElement.children).indexOf(card);
+            products[index].quantity = Number(quantity.innerText);
+            localStorage.setItem("cart", JSON.stringify(products));
+            total();
+        }
+    }
+    
+// remove item
+    function remove(event){
+        let card = event.target.parentElement.parentElement;
+        let index = Array.from(card.parentElement.children).indexOf(card);
+        products.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(products));
+        card.remove();
+        total();
+    }
+    
+// total  
+    function total(){
+        let cards = document.getElementById("cart").children;
+        let grandTotal = 0;
+        for (let i = 0; i < cards.length; i++){
+            let amount = Number(cards[i].querySelector("#price").innerText);
+            grandTotal = grandTotal + amount;
+        }
+        document.getElementById("grandTotal").innerText = grandTotal;
+        document.getElementById("summaryTotal").innerText = grandTotal;
+    }
+
+// clear cart
+    function clearCart(){
+        localStorage.removeItem("cart");
+        document.getElementById("cart").innerHTML = "";
+        total();
+    }
+    add();
+
+</script>
+</body>
+</html>

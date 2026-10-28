@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roots & Rituals</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body{
+      margin: 0;
+      background:
+      radial-gradient(
+        circle at 10% 15%,
+        rgba(176, 204, 154, 0.48) 0,
+        transparent 30%
+        ),
+      radial-gradient(
+        circle at 90% 80%,
+        rgba(207, 181, 144, 0.45) 0,
+        transparent 32%
+        ),
+      linear-gradient(
+        135deg,
+        #ded5c3 0%,
+        #eee6d7 35%,
+        #f5efe3 65%,
+        #d9cdb8 100%
+        );
+        background-attachment: fixed;
+        color: #3f5138;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s;
+      }
+      .card:hover{
+        transform: translateY(-10px);
+        box-shadow: 10px 10px 25px rgba(18, 32, 24, 0.25);
+      }
+      .card-body{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .card-text {
+        flex-grow: 1;
+      }
+      .btn-group-custom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: auto;
+      }
+      .card-img-top{
+        height: 220px;
+        object-fit: cover;
+      }
+      #heading{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 36px;
+    color: #3e5c4a;
+}
+      .mt-3{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .brand-title{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 28px;
+        font-weight: bold;
+        color: #3e5c4a;
+        letter-spacing: 1px;
+      }
+      .cart-link,
+      .login-link {
+        font-size: 16px;
+        color: #3e5c4a !important;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .cart-link i,
+      .login-link i {
+        font-size: 19px;
+        margin-right: 5px;
+      }
+      .cart-link:hover,
+      .login-link:hover {
+        color: #198754 !important;
+      }
+      .hover:hover{
+        color:antiquewhite ;
+        background-color: #3e5c4a;
+      }
+      
+      .about-section{
+        opacity: 0;
+        transform: translateY(60px);
+        transition: 1s ease;
+      }
+      
+      .about-section.show{
+        opacity: 1;
+        transform: translateY(0);
+      } 
+      
+      /* Combo Card Background */
+.combo-card {
+    background-color: white;
+    border: 1px solid #e5e0d6;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.3s;
+    animation: comboSlideUp 0.8s ease-out both;
+}
+
+/* Card Hover Effect */
+.combo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(18, 32, 24, 0.18);
+}
+
+/* Card Text Font */
+.combo-card .card-body {
+    font-family: Cambria, Cochin, Georgia, 'Times New Roman', serif;
+    padding: 15px;
+}
+
+.combo-card .card-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #3e5c4a;
+    font-size: 19px;
+}
+
+.combo-card .card-text {
+    font-family: Cambria, Cochin, Georgia, 'Times New Roman', serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.combo-card small {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #7d8b70;
+    letter-spacing: 1px;
+}
+
+/* Combo Price */
+.combo-price {
+    font-family: Cambria, Cochin, Georgia, 'Times New Roman', serif;
+    color: #3e5c4a;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Buttons */
+.combo-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.combo-buttons .btn {
+    flex: 1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    padding: 9px 5px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+/* Heading Slide Up Animation */
+.combo-section .text-center {
+    animation: comboSlideUp 0.8s ease-out both;
+}
+/* View Product Button */
+.view-btn {
+    background-color: transparent;
+    border: 1px solid #3e5c4a;
+    color: #3e5c4a;
+}
+
+.view-btn:hover {
+    background-color: #e8eee5;
+    border-color: #3e5c4a;
+    color: #3e5c4a;
+}
+
+/* Add to Cart Button */
+.add-btn {
+    background-color: #3e5c4a;
+    border: 1px solid #3e5c4a;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: #2f4537;
+    border-color: #2f4537;
+    color: white;
+}
+
+/* Slide Up Animation */
+@keyframes comboSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile View */
+@media (max-width: 576px) {
+    .combo-buttons {
+        flex-direction: column;
+    }
+}
+
+/* Navbar Responsive */
+    .navbar-toggler {
+      border: 1px solid #3e5c4a;
+      padding: 6px 10px;
+    }
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 2px rgba(62, 92, 74, 0.2);
+    }
+    .navbar-toggler-icon {
+      width: 24px;
+      height: 24px;
+    }
+    @media (max-width: 991.98px) {
+      .navbar-brand {
+        min-width: 0;
+      }
+      .brand-title {
+        font-size: 20px;
+      }
+      .navbar-brand img {
+        width: 45px;
+      }
+      #navbarScroll {
+        width: 100%;
+        padding: 15px 0;
+      }
+      #navbarScroll .navbar-nav {
+        max-height: none !important;
+        overflow: visible;
+        margin: 0 !important;
+      }
+      #navbarScroll form {
+        margin: 12px 0;
+        width: 100%;
+      }
+      #navbarScroll form input {
+        min-width: 0;
+      }
+      #navbarScroll > .d-flex {
+        margin: 10px 0 0 !important;
+        justify-content: center;
+      }
+      #navbarScroll .dropdown-menu {
+        text-align: center;
+      }
+    }
+
+/* Footer Alignment */
+    footer ul.list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    footer ul.list li {
+      list-style: none;
+    }
+    footer ul.list li a {
+      display: inline-block;
+      transition: 0.3s;
+    }
+    footer ul.list li a:hover {
+      color: white !important;
+      padding-left: 4px;
+    }
+    footer h4,footer h5 {
+      color: #ffffff;
+    }
+    footer p {
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+    footer .row {
+      align-items: flex-start;
+    }
+    footer .bi {
+      vertical-align: middle;
+    }
+    footer .rounded-circle {
+      width: 35px;
+      height: 35px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (max-width: 767.98px) {
+      footer {
+        text-align: center;
+      }
+      footer .row > div {
+        margin-bottom: 25px;
+      }
+      footer .row > div:last-child {
+        margin-bottom: 10px;
+      }
+      footer .text-md-end {
+        text-align: center !important;
+        margin-top: 10px;
+      }
+      footer hr {
+        margin: 20px 0;
+      }
+    }
+
+/* Footer Bottom Alignment */
+.footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.footer-developer {
+    text-align: left;
+    color: #cbd5d8;
+}
+
+.footer-developer a {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.footer-developer a:hover {
+    color: #c5d8b8;
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    text-align: center;
+    color: #cbd5d8;
+    margin: 0;
+}
+
+.footer-love {
+    text-align: right;
+    color: #cbd5d8;
+    margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 767.98px) {
+    .footer-bottom {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .footer-developer,
+    .footer-copyright,
+    .footer-love {
+        text-align: center;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+<!--creating navbar  -->
+    <nav class="navbar navbar-expand-lg bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+      
+<!-- next line is used to add logo and name -->
+      <img src="RRlogo.jpg" alt="image" width="65">
+      <span class="brand-title ms-2"> ROOTS & RITUALS </span>
+    </a>
+
+<!-- creating hambugger -->
+    <button class="navbar-toggler" type="button"data-bs-toggle="collapse" data-bs-target="#navbarScroll"aria-controls="navbarScroll" aria-expanded="false"aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarScroll">
+       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll text-center" style="--bs-scroll-height: 100px;">
+
+<!-- creating home -->
+        <li class="nav-item">
+          <a class="nav-link active px-3" aria-current="page" href="index.html">Home</a>
+        </li>
+
+<!--creating about  -->
+        <li class="nav-item">
+          <a class="nav-link px-3" href="about.html">About</a>
+        </li>
+
+<!-- Creating face category with dropdown -->
+        <li class="nav-item dropdown">
+          <a id="face" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+            Face
+          </a>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item hover" href="product.html?facewash"> Facewash</a></li>
+            <li><a class="dropdown-item hover" href="product.html?serum">Serum</a></li>
+            <li><a class="dropdown-item hover" href="product.html?moisturizer">Moisturizer</a></li>
+            <li><a class="dropdown-item hover" href="product.html?sunscreen">Sunscreen</a></li>
+            <li><a class="dropdown-item hover" href="product.html?facemask">Face mask</a></li>
+            <li><a class="dropdown-item hover" href="product.html?sheetmask">Sheet mask</a></li>
+          </ul>
+        </li>
+
+<!-- creating hair category with dropdown -->
+        <li class="nav-item dropdown">
+          <a id="hair" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Hair
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item hover" href="product.html?shampoo">Shampoo</a></li>
+            <li><a class="dropdown-item hover" href="product.html?conditioner">Conditioner</a></li>
+            <li><a class="dropdown-item hover" href="product.html?hairserum">Hair Serum</a></li>
+          </ul>
+        </li>
+
+<!-- creating lip category with dropdown -->
+         <li class="nav-item dropdown">
+          <a id="lip" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Lip
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item hover" href="product.html?lipbalm"> Lip balm</a></li>
+            <li><a class="dropdown-item hover" href="product.html?lipscrub">Lip Scrub</a></li>
+            <li><a class="dropdown-item hover" href="product.html?lipmask">Lip mask</a></li>
+          </ul>
+        </li>
+
+<!-- creating combo -->
+        <li class="nav-item">
+          <a class="nav-link px-3" href="combo.html">Combo</a>
+        </li>
+        
+<!-- creating contact -->
+        <!-- <li class="nav-item">
+          <a class="nav-link px-3" href="#">Contact</a>
+        </li> -->
+      </ul>
+
+<!--creating search bar  -->
+    <form class="d-flex" role="search" action="search.html">
+      <input class="form-control me-2"type="search"name="search"placeholder="Search"aria-label="Search">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </form>
+
+<!-- Cart and Login -->
+    <div class="d-flex align-items-center ms-4">
+      <a href="cart.html" class="nav-link me-3 cart-link">
+        <i class="bi bi-cart3"></i>Cart
+      </a>
+      <a href="login.html" class="nav-link login-link">
+        <i class="bi bi-person-circle"></i>Login
+      </a>
+    </div>
+  </div>
+</div>
+</nav>
+
+<!-- Combo Collection -->
+<section class="combo-section container my-5">
+    <div class="text-center mb-4">
+        <p class="combo-subtitle"></p>
+        <h2 id="heading">Our Combo Collection</h2>
+        <p>Discover your favourite essentials together and make your daily rituals special.</p>
+    </div>
+    <div class="row g-4">
+<!-- Face Combo -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card combo-card h-100">
+                <img src="RRface.jpg" class="card-img-top" alt="Face Care Combo">
+                <div class="card-body">
+                    <small>FACE CARE</small>
+                    <h5 class="card-title">Glow Essentials Combo</h5>
+                    <p class="card-text">Facewash, Face Serum, Moisturizer, Sunscreen and sheetmask for your everyday skincare routine.</p>
+                    <h5 class="combo-price">₹1,499</h5>
+                    <div class="combo-buttons">
+                        <!-- <a href="combo-view.html?combo=face" class="btn view-btn">View Product</a> -->
+                        <button class="btn add-btn"onclick="addComboToCart('Glow Essentials Combo',1499,'RRface.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Hair Combo -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card combo-card h-100">
+                <img src="RRhair.jpg" class="card-img-top" alt="Hair Care Combo">
+                <div class="card-body">
+                    <small>HAIR CARE</small>
+                    <h5 class="card-title">Silky Hair Combo</h5>
+                    <p class="card-text">Shampoo, Conditioner and Hair Serum for your complete haircare routine.</p>
+                    <h5 class="combo-price">₹1,599</h5>
+                    <div class="combo-buttons">
+                        <!-- <a href="combo-view.html?combo=hair" class="btn view-btn">View Product</a> -->
+                        <button class="btn add-btn"onclick="addComboToCart('Silky Hair Combo',1599,'RRhair.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Lip Combo -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card combo-card h-100">
+                <img src="RRlipcare.jpg" class="card-img-top" alt="Lip Care Combo">
+                <div class="card-body">
+                    <small>LIP CARE</small>
+                    <h5 class="card-title">Soft Lips Combo</h5>
+                    <p class="card-text">Lip Balm, Lip Scrub and Lip Mask for your everyday lipcare routine.</p>
+                    <h5 class="combo-price">₹799</h5>
+                    <div class="combo-buttons">
+                        <!-- <a href="combo-view.html?combo=lip" class="btn view-btn">View Product</a> -->
+                        <button class="btn add-btn"onclick="addComboToCart('Soft Lips Combo',799,'RRlipcare.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Face and Lip Combo -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card combo-card h-100">
+                <img src="RRfacecare.jpg" class="card-img-top" alt="Beauty Combo">
+                <div class="card-body">
+                    <small>BEAUTY CARE</small>
+                    <h5 class="card-title">Daily Beauty Combo</h5>
+                    <p class="card-text">A selection of skincare and lipcare essentials for your daily routine.</p>
+                    <h5 class="combo-price">₹1,199</h5>
+                    <div class="combo-buttons">
+                        <!-- <a href="combo-view.html?combo=beauty" class="btn view-btn">View Product</a> -->
+                        <button class="btn add-btn"onclick="addComboToCart('Daily Beauty Combo',1199,'RRfacecare.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-light pt-5 pb-3 mt-5">
+  <div class="container">
+    <div class="row">
+<!-- title -->
+ <div class="col-md-4 mb-4">
+  <h4 class="fw-bold">ROOTS & RITUALS</h4>
+  <p class="text-secondary">Natural skincare and haircare inspired by the goodness of nature.</p>
+  <p class="text-secondary">Rooted in nature • Made with love</p>
+</div>
+<!--Links -->
+<!-- home -->
+<div class="col-md-2 mb-4">
+  <h5 class="mb-3">Links</h5>
+  <ul class="list">
+    <li class="mb-2">
+      <a href="index.html"class="text-secondary text-decoration-none">Home</a>
+    </li>
+<!-- face -->
+    <li class="mb-2">
+      <a href="index.html#face" class="text-secondary text-decoration-none">Face</a>
+    </li>
+<!-- hair -->
+    <li class="mb-2">
+      <a href="index.html#hair" class="text-secondary text-decoration-none">Hair</a>
+    </li>
+<!-- lip -->
+    <li class="mb-2">
+       <a href="index.html#lip" class="text-secondary text-decoration-none">Lip</a>
+    </li>
+  </ul>
+</div>
+<!-- Customer Care -->
+<div class="col-md-3 mb-4">
+  <h5 class="mb-3">Customer Care</h5>
+  <ul class="list">
+    <li class="mb-2">
+      <a href="#"class="text-secondary text-decoration-none">Contact Us</a>
+    </li>
+<!-- shipping and delivery -->
+    <li class="mb-2">
+      <a href="#"class="text-secondary text-decoration-none">Shipping & Delivery</a>
+    </li>
+<!-- return and refund -->
+    <li class="mb-2">
+      <a href="#"class="text-secondary text-decoration-none">Returns & Refunds</a>
+    </li>
+<!-- privacy policy -->
+    <li>
+      <a href="#"class="text-secondary text-decoration-none">Privacy Policy</a>
+    </li>
+  </ul>
+</div>
+<!-- Contact -->
+<div class="col-md-3 mb-4">
+  <h5 class="mb-3">Get In Touch</h5>
+  <p class="text-secondary mb-2">
+    <i class="bi bi-envelope me-2"></i>rootsandrituals@gmail.com</p>
+    <p class="text-secondary">
+      <i class="bi bi-telephone me-2"></i>+91 90000 00000
+    </p>
+<!-- Icons -->
+<div class="mt-3">
+  <a href="#"class="btn btn-outline-light btn-sm rounded-circle me-2">
+    <i class="bi bi-instagram"></i>
+  </a>
+  <a href="#"class="btn btn-outline-light btn-sm rounded-circle me-2">
+    <i class="bi bi-facebook"></i>
+  </a>
+  <a href="#"class="btn btn-outline-light btn-sm rounded-circle">
+    <i class="bi bi-youtube"></i>
+  </a>
+</div>
+</div>
+</div>
+<!-- Copyright -->
+<hr class="border-secondary">
+<div class="footer-bottom">
+    <div class="footer-developer">Designed & Developed by
+        <a href="https://nithyasree-26.github.io/NithyaSree-portfolio/"target="_blank"
+           rel="noopener noreferrer">Nithya Sree
+        </a>
+    </div>
+    <p class="footer-copyright"> © 2026 Roots & Rituals. All Rights Reserved.</p>
+    <p class="footer-love">Made with ♥ for natural beauty.</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+function addComboToCart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({
+        name: name,
+        price: "₹" + price,
+        image: image
+    });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = "cart.html";
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

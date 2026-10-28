@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Roots & Rituals</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+    body {
+      margin: 0;
+      background-color: #f3eee5;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(173, 187, 166, 0.418) 0, transparent 30%),
+        radial-gradient(circle at 85% 75%, rgba(226, 218, 208, 0.555) 0, transparent 30%);
+      background-attachment: fixed;
+    }
+    
+/* Product Cards */
+    .card {
+      height: 100%;
+      transition: 0.5s;
+      margin-top: 30px;
+    }
+    .product-card {
+      animation: slideUp 0.7s ease;
+    }
+    
+    @keyframes slideUp {
+      from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 10px 10px 25px rgba(31, 54, 41, 0.25);
+  }
+  .card-img-top {
+    height: 220px;
+    object-fit: cover;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-text {
+    flex-grow: 1;
+  }
+  .btn-group-custom {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: auto;
+  }
+  h2 {
+    color: #3e5c4a;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin: 40px 0;
+  }
+/* Navbar */
+  .brand-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #3e5c4a;
+    letter-spacing: 1px;
+  }
+  .cart-link,
+  .login-link {
+    font-size: 16px;
+    color: #3e5c4a !important;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .cart-link i,
+  .login-link i {
+    font-size: 19px;
+    margin-right: 5px;
+  }
+  .cart-link:hover,
+  .login-link:hover {
+    color: #198754 !important;
+  }
+  .hover:hover {
+    color: antiquewhite;
+    background-color: #3e5c4a;
+  }
+
+/* Navbar Responsive */
+    .navbar-toggler {
+      border: 1px solid #3e5c4a;
+      padding: 6px 10px;
+    }
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 2px rgba(62, 92, 74, 0.2);
+    }
+    .navbar-toggler-icon {
+      width: 24px;
+      height: 24px;
+    }
+    @media (max-width: 991.98px) {
+      .navbar-brand {
+        min-width: 0;
+      }
+      .brand-title {
+        font-size: 20px;
+      }
+      .navbar-brand img {
+        width: 45px;
+      }
+      #navbarScroll {
+        width: 100%;
+        padding: 15px 0;
+      }
+      #navbarScroll .navbar-nav {
+        max-height: none !important;
+        overflow: visible;
+        margin: 0 !important;
+      }
+      #navbarScroll form {
+        margin: 12px 0;
+        width: 100%;
+      }
+      #navbarScroll form input {
+        min-width: 0;
+      }
+      #navbarScroll > .d-flex {
+        margin: 10px 0 0 !important;
+        justify-content: center;
+      }
+      #navbarScroll .dropdown-menu {
+        text-align: center;
+      }
+    }
+
+/* Footer Alignment */
+    footer ul.list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    footer ul.list li {
+      list-style: none;
+    }
+    footer ul.list li a {
+      display: inline-block;
+      transition: 0.3s;
+    }
+    footer ul.list li a:hover {
+      color: white !important;
+      padding-left: 4px;
+    }
+    footer h4,footer h5 {
+      color: #ffffff;
+    }
+    footer p {
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+    footer .row {
+      align-items: flex-start;
+    }
+    footer .bi {
+      vertical-align: middle;
+    }
+    footer .rounded-circle {
+      width: 35px;
+      height: 35px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (max-width: 767.98px) {
+      footer {
+        text-align: center;
+      }
+      footer .row > div {
+        margin-bottom: 25px;
+      }
+      footer .row > div:last-child {
+        margin-bottom: 10px;
+      }
+      footer .text-md-end {
+        text-align: center !important;
+        margin-top: 10px;
+      }
+      footer hr {
+        margin: 20px 0;
+      }
+    }
+
+/* Footer Bottom Alignment */
+.footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.footer-developer {
+    text-align: left;
+    color: #cbd5d8;
+}
+
+.footer-developer a {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.footer-developer a:hover {
+    color: #c5d8b8;
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    text-align: center;
+    color: #cbd5d8;
+    margin: 0;
+}
+
+.footer-love {
+    text-align: right;
+    color: #cbd5d8;
+    margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 767.98px) {
+    .footer-bottom {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .footer-developer,
+    .footer-copyright,
+    .footer-love {
+        text-align: center;
+    }
+}
+
+
+
+    </style>
+</head>
+
+<body>
+
+<!--creating navbar  -->
+    <nav class="navbar navbar-expand-lg bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+      
+<!-- next line is used to add logo and name -->
+      <img src="RRlogo.jpg" alt="image" width="65">
+      <span class="brand-title ms-2"> ROOTS & RITUALS </span>
+    </a>
+
+<!-- creating hambugger -->
+    <button class="navbar-toggler" type="button"data-bs-toggle="collapse" data-bs-target="#navbarScroll"aria-controls="navbarScroll" aria-expanded="false"aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarScroll">
+       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll text-center" style="--bs-scroll-height: 100px;">
+
+<!-- creating home -->
+        <li class="nav-item">
+          <a class="nav-link active px-3" aria-current="page" href="index.html">Home</a>
+        </li>
+
+<!--creating about  -->
+        <li class="nav-item">
+          <a class="nav-link px-3" href="about.html">About</a>
+        </li>
+
+<!-- Creating face category with dropdown -->
+        <li class="nav-item dropdown">
+          <a id="face" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+            Face
+          </a>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item hover" href="product.html?facewash"> Facewash</a></li>
+            <li><a class="dropdown-item hover" href="product.html?serum">Serum</a></li>
+            <li><a class="dropdown-item hover" href="product.html?moisturizer">Moisturizer</a></li>
+            <li><a class="dropdown-item hover" href="product.html?sunscreen">Sunscreen</a></li>
+            <li><a class="dropdown-item hover" href="product.html?facemask">Face mask</a></li>
+            <li><a class="dropdown-item hover" href="product.html?sheetmask">Sheet mask</a></li>
+          </ul>
+        </li>
+
+<!-- creating hair category with dropdown -->
+        <li class="nav-item dropdown">
+          <a id="hair" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Hair
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item hover" href="product.html?shampoo">Shampoo</a></li>
+            <li><a class="dropdown-item hover" href="product.html?conditioner">Conditioner</a></li>
+            <li><a class="dropdown-item hover" href="product.html?hairserum">Hair Serum</a></li>
+          </ul>
+        </li>
+
+<!-- creating lip category with dropdown -->
+         <li class="nav-item dropdown">
+          <a id="lip" class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Lip
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item hover" href="product.html?lipbalm"> Lip balm</a></li>
+            <li><a class="dropdown-item hover" href="product.html?lipscrub">Lip Scrub</a></li>
+            <li><a class="dropdown-item hover" href="product.html?lipmask">Lip mask</a></li>
+          </ul>
+        </li>
+
+<!-- creating combo -->
+        <li class="nav-item">
+          <a class="nav-link px-3" href="combo.html">Combo</a>
+        </li>
+        
+<!-- creating contact -->
+        <!-- <li class="nav-item">
+          <a class="nav-link px-3" href="#">Contact</a>
+        </li> -->
+      </ul>
+
+<!--creating search bar  -->
+    <form class="d-flex" role="search" action="search.html">
+      <input class="form-control me-2"type="search"name="search"placeholder="Search"aria-label="Search">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </form>
+
+<!-- Cart and Login -->
+    <div class="d-flex align-items-center ms-4">
+      <a href="cart.html" class="nav-link me-3 cart-link">
+        <i class="bi bi-cart3"></i>Cart
+      </a>
+      <a href="login.html" class="nav-link login-link">
+        <i class="bi bi-person-circle"></i>Login
+      </a>
+    </div>
+  </div>
+</div>
+</nav>
+
+  
+<!-- search content -->
+    <div class="container">
+        <!-- <h2>Search Results</h2> -->
+        <div class="row g-4" id="searchResults"></div>
+    </div>
+
+
+
+<!-- Footer -->
+<footer class="bg-dark text-light pt-5 pb-3 mt-5">
+  <div class="container">
+    <div class="row">
+<!-- title -->
+ <div class="col-md-4 mb-4">
+  <h4 class="fw-bold">ROOTS & RITUALS</h4>
+  <p class="text-secondary">Natural skincare and haircare inspired by the goodness of nature.</p>
+  <p class="text-secondary">Rooted in nature • Made with love</p>
+</div>
+<!--Links -->
+<!-- home -->
+<div class="col-md-2 mb-4">
+  <h5 class="mb-3">Links</h5>
+  <ul class="list">
+    <li class="mb-2">
+      <a href="index.html"class="text-secondary text-decoration-none">Home</a>
+    </li>
+<!-- face -->
+    <li class="mb-2">
+      <a href="index.html#face" class="text-secondary text-decoration-none">Face</a>
+    </li>
+<!-- hair -->
+    <li class="mb-2">
+      <a href="index.html#hair" class="text-secondary text-decoration-none">Hair</a>
+    </li>
+<!-- lip -->
+    <li class="mb-2">
+       <a href="index.html#lip" class="text-secondary text-decoration-none">Lip</a>
+    </li>
+  </ul>
+</div>
+<!-- Customer Care -->
+<div class="col-md-3 mb-4">
+  <h5 class="mb-3">Customer Care</h5>
+  <ul class="list">
+    <li class="mb-2">
+      <a href="#"class="text-secondary text-decoration-none">Contact Us</a>
+    </li>
+<!-- shipping and delivery -->
+    <li class="mb-2">
+      <a href="#"class="text-secondary text-decoration-none">Shipping & Delivery</a>
+    </li>
+<!-- return and refund -->
+    <li class="mb-2">
+      <a href="#"class="text-secondary text-decoration-none">Returns & Refunds</a>
+    </li>
+<!-- privacy policy -->
+    <li>
+      <a href="#"class="text-secondary text-decoration-none">Privacy Policy</a>
+    </li>
+  </ul>
+</div>
+<!-- Contact -->
+<div class="col-md-3 mb-4">
+  <h5 class="mb-3">Get In Touch</h5>
+  <p class="text-secondary mb-2">
+    <i class="bi bi-envelope me-2"></i>rootsandrituals@gmail.com</p>
+    <p class="text-secondary">
+      <i class="bi bi-telephone me-2"></i>+91 90000 00000
+    </p>
+<!-- Icons -->
+<div class="mt-3">
+  <a href="#"class="btn btn-outline-light btn-sm rounded-circle me-2">
+    <i class="bi bi-instagram"></i>
+  </a>
+  <a href="#"class="btn btn-outline-light btn-sm rounded-circle me-2">
+    <i class="bi bi-facebook"></i>
+  </a>
+  <a href="#"class="btn btn-outline-light btn-sm rounded-circle">
+    <i class="bi bi-youtube"></i>
+  </a>
+</div>
+</div>
+</div>
+<!-- Copyright -->
+<hr class="border-secondary">
+<div class="footer-bottom">
+    <div class="footer-developer">Designed & Developed by
+        <a href="https://nithyasree-26.github.io/NithyaSree-portfolio/"target="_blank"
+           rel="noopener noreferrer">Nithya Sree
+        </a>
+    </div>
+    <p class="footer-copyright"> © 2026 Roots & Rituals. All Rights Reserved.</p>
+    <p class="footer-love">Made with ♥ for natural beauty.</p>
+</div>
+</div>
+</div>
+</footer>
+
+
+<script>
+
+let searchValue = new URLSearchParams(window.location.search).get("search");
+let results = document.getElementById("searchResults");
+let products = [
+/* FACE PRODUCTS */
+    {
+        name: "Face Serum",
+        category: "face",
+        price: 599,
+        image: "RRfaceserum.jpg",
+        description: "A lightweight face serum that helps brighten the skin, improve skin texture and provide a healthy natural glow. For all skin types.",
+        link: "product.html?serum"
+    },
+    {
+        name: "Facewash",
+        category: "face",
+        price: 389,
+        image: "RRfacewash.jpg",
+        description: "A gentle face wash that cleanses dirt, oil and impurities while keeping the skin fresh and soft. Suitable for all skin types.",
+        link: "product.html?facewash"
+    },
+    {
+        name: "Moisturizer",
+        category: "face",
+        price: 349,
+        image: "RRmoisturizer.jpg",
+        description: "A hydrating moisturizer that keeps the skin soft, smooth and nourished. Helps maintain healthy and glowing skin.",
+        link: "product.html?moisturizer"
+    },
+    {
+        name: "Sunscreen",
+        category: "face",
+        price: 489,
+        image: "RRsunscreen.jpg",
+        description: "A lightweight sunscreen that helps protect the skin from harmful UV rays while keeping it hydrated and comfortable.",
+        link: "product.html?sunscreen"
+    },
+    {
+        name: "Face Mask",
+        category: "face",
+        price: 549,
+        image: "RRfacemask.jpg",
+        description: "A deep-cleansing clay mask infused with Kaolin Clay, Green Tea Extract, Aloe Vera & Witch Hazel. Helps detoxify pores and control excess oil. For all skin types.",
+        link: "product.html?facemask"
+    },
+    {
+        name: "Sheet mask",
+        category: "face",
+        price: 199,
+        image: "RRsheetmask.jpg",
+        description: "An instant glow sheet mask infused with Hyaluronic Acid, Niacinamide, Aloe Vera & Green Tea Extract. Deeply hydrates and brightens dull skin in just 15 mins. For all skin types.",
+        link: "product.html?sheetmask"
+    },
+/* HAIR PRODUCTS */
+    {
+        name: "Shampoo",
+        category: "hair",
+        price: 599,
+        image: "RRshampoo.jpg",
+        description: "A gentle cleansing formula infused with Amla, Bhringraj & Hibiscus. Removes build-up while nourishing your roots. Sulfate & Paraben-free. For all hair types.",
+        link: "product.html?shampoo"
+    },
+    {
+        name: "Conditioner",
+        category: "hair",
+        price: 489,
+        image: "RRconditioner.jpg",
+        description: "Deep nourishment infused with Aloe Vera, Coconut & Methi. Hydrates, smooths and restores natural shine. Silicone & Paraben-free.",
+        link: "product.html?conditioner"
+    },
+    {
+        name: "Hair Serum",
+        category: "hair",
+        price: 789,
+        image: "RRserum.jpg",
+        description: "A lightweight & non-greasy serum infused with Argan Oil, Jojoba & Vitamin E. Reduces frizz, adds instant shine and protects hair strands.",
+        link: "product.html?hairserum"
+    },
+/* LIP PRODUCTS */   
+    {
+        name: "Lip balm",
+        category: "lip",
+        price: 199,
+        image: "RRlipbalm.jpg",
+        description: "Infused with Shea Butter, Vitamin E, Coconut Oil & Almond Oil. Deeply nourishes and protects dry, chapped lips for soft & healthy lips. 100% Natural.",
+        link: "product.html?lipbalm"
+    },
+    {
+        name: "Lip Scrub",
+        category: "lip",
+        price: 349,
+        image: "RRlipscrub.jpg",
+        description: "Jojoba Oil, Coconut Oil & Vitamin E. Gently exfoliates dead skin and dark spots to give smooth & naturally pink lips.",
+        link: "product.html?lipscrub"
+    },
+    {
+        name: "Lip Mask",
+        category: "lip",
+        price: 399,
+        image: "RRlipmask.jpg",
+        description: "An overnight lip treatment infused with Hyaluronic Acid, Shea Butter & Vitamin E. Repairs, hydrates and plumps lips while you sleep.",
+        link: "product.html?lipmask"
+    }
+
+];
+
+if(searchValue){
+    searchValue = searchValue.toLowerCase();
+    for(let i = 0; i < products.length; i++){
+        let productName = products[i].name.toLowerCase();
+        let productCategory = products[i].category.toLowerCase();
+        if(productName.includes(searchValue) || productCategory.includes(searchValue)){
+            results.innerHTML += `<div class="col-md-4"><div class="card product-card"><img src="${products[i].image}" class="card-img-top" alt="image"><div class="card-body"><h5 class="card-title">${products[i].name}</h5><h6 class="card-subtitle mb-2 text-body-secondary">₹${products[i].price}</h6><p class="card-text">${products[i].description}</p><div class="btn-group-custom"><a href="${products[i].link}" class="btn btn-outline-success btn-sm">View Product</a><button class="btn btn-success"onclick="addToCart('${products[i].name}', ${products[i].price}, '${products[i].image}')">Add to Cart</button></div></div></div></div>`;
+        }
+    }
+}
+
+function addToCart(name, price, image){
+    let product = {
+        name: name,
+        price: "₹" + price,
+        image: image
+    };
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = "cart.html";
+}
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

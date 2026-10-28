@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Roots & Rituals</title>
+    <style>
+    *{
+        box-sizing: border-box;
+    }
+    body{
+        margin: 0;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        background:
+        linear-gradient(
+            120deg,
+            #d8cfbd 0%,
+            #eee8dc 22%,
+            #f5f1e8 50%,
+            #e5dfd2 78%,
+            #cfc4ae 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+    }
+/* Background circles */
+    .circle1{
+        position: absolute;
+        width: 330px;
+        height: 330px;
+        background-color: rgba(62, 92, 74, 0.329);
+        border-radius: 50%;
+        top: -140px;
+        left: -120px;
+        animation: greenMove 8s ease-in-out infinite alternate;
+    }
+    .circle2{
+        position: absolute;
+        width: 380px;
+        height: 380px;
+        background-color: rgba(163, 139, 101, 0.39);
+        border-radius: 50%;
+        bottom: -190px;
+        right: -150px;
+        animation: beigeMove 9s ease-in-out infinite alternate;
+    }
+/* Green circle animation */
+    @keyframes greenMove{
+        0%{
+        transform: translate(0, 0);
+    }
+    100%{
+        transform: translate(25px, 18px);
+    }
+}
+/* Beige circle animation */
+    @keyframes beigeMove{
+        0%{
+        transform: translate(0, 0);
+    }
+    100%{
+        transform: translate(-22px, -18px);
+    }
+}
+/* Login box */
+.login-box{
+    position: relative;
+    width: 380px;
+    background-color: white;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    animation: showBox 1s ease;
+    z-index: 1;
+}
+
+@keyframes showBox{
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2{
+    text-align: center;
+    color: #3f5138;
+    margin-bottom: 8px;
+    font-size: 28px;
+}
+.welcome{
+    text-align: center;
+    color: #777;
+    margin-bottom: 28px;
+    font-size: 14px;
+}
+label{
+    display: block;
+    margin-bottom: 6px;
+    color: #444;
+    font-size: 14px;
+}
+input{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+input:focus{
+    border-color: #3f5138;
+    box-shadow: 0 0 0 3px #e5eee1;
+}
+button{
+    width: 100%;
+    padding: 12px;
+    background-color: #556e4b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+button:hover{
+    background-color: #35442f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+button:active{
+    transform: scale(0.98);
+}
+.message{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #c0392b;
+}
+
+/* Mobile */
+    @media(max-width: 500px){
+        .login-box{
+            width: 90%;
+            padding: 28px;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+    
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="login-box">
+        <h2>Welcome</h2>
+        <p class="welcome">Login to continue your Roots & Rituals journey</p>
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter your password">
+        <button onclick="login()">Login</button>
+        <p class="message" id="message"></p>
+    </div>
+    
+    
+    <script>
+    
+    function login(){
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let message = document.getElementById("message");
+        if(email == "" || password == ""){
+            message.innerText = "Please fill both fields";
+        }
+        else{
+            message.style.color = "green";
+            message.innerText = "Login successful!";
+        }
+    }
+
+    </script>
+</body>
+</html>
